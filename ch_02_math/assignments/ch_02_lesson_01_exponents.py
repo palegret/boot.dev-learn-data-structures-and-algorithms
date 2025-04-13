@@ -1,5 +1,33 @@
+def sum(nums):
+    if not nums:
+        return 0
+
+    sum = 0
+    
+    for num in nums:
+        sum += num
+
+    return sum
+
+
+def average_followers(nums):
+    if not nums:
+        return None
+        
+    total_followers = sum(nums)
+    
+    return total_followers / len(nums)
+
+
 def get_estimated_spread(audiences_followers):
-    pass
+    if not audiences_followers: 
+        return 0
+
+    num_followers = len(audiences_followers)
+    average_audience_followers = average_followers(audiences_followers)
+    estimated_spread = average_audience_followers * (num_followers ** 1.2)
+
+    return estimated_spread
 
 
 # Tests
@@ -13,8 +41,33 @@ test_cases = [
     ([100], 100),
     ([50, 60, 70, 80, 90], 483),
     ([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 872),
-    ([5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100], 1912),
+    (
+        [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40,
+            45,
+            50,
+            55,
+            60,
+            65,
+            70,
+            75,
+            80,
+            85,
+            90,
+            95,
+            100,
+        ],
+        1912,
+    ),
 ]
+
 
 def test(input, expected_output, test_function):
     try:
@@ -23,7 +76,7 @@ def test(input, expected_output, test_function):
         print(f"Expecting: {expected_output}")
         print("--------------------------------------------------------------------------------")
 
-        result = test_function(input)
+        result = round(test_function(input))
 
         print(f"Actual: {result}")
 
