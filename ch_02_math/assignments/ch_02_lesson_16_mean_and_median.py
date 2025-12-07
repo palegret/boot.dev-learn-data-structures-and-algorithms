@@ -20,6 +20,7 @@ def average_followers(nums):
         sum += num
     return sum / len(nums)
 
+
 # Test
 
 def test(input1, expected_output, test_function):
