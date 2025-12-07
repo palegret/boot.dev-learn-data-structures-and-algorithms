@@ -1,0 +1,82 @@
+import math
+
+"""
+Original solution:
+def log_scale(data, base):
+    result = []
+    for x in data:
+        log_value = math.log(x, base)
+        result.append(log_value)
+
+    return result
+"""
+
+def log_scale(data, base):
+    result = [math.log(n, base) for n in data]
+    return result
+
+
+# Test
+
+def test(data, base, expected_output, test_function):
+    try:
+        print("--------------------------------------------------------------------------------")
+        print(f"Inputs:")
+        print(f" * data: {data}")
+        print(f" * base: {base}")
+        print(f"Expected: {expected_output}")
+        print("--------------------------------------------------------------------------------")
+
+        result = test_function(data, base)
+
+        for i in range(0, len(result)):
+            result[i] = round(result[i], 2)
+
+        print(f"Actual: {result}")
+
+        if result == expected_output:
+            print("Pass")
+            return True
+        else:
+            print("Fail")
+            return False
+    except Exception as e:
+        print("Fail")
+        print(e)
+        return False
+
+
+# Runner
+
+test_cases = [
+    ([1, 10, 100, 1000], 10, [0.0, 1.0, 2.0, 3.0]),
+    ([1, 2, 4, 8], 2, [0.0, 1.0, 2.0, 3.0]),
+    ([2, 4, 8, 16], 2, [1.0, 2.0, 3.0, 4.0]),
+    ([3, 9, 27, 81], 3, [1.0, 2.0, 3.0, 4.0]),
+    ([5, 25, 125, 625], 5, [1.0, 2.0, 3.0, 4.0]),
+    ([10, 100, 1000, 10000], 10, [1.0, 2.0, 3.0, 4.0]),
+    ([20, 400, 8000, 160000], 20, [1.0, 2.0, 3.0, 4.0]),
+]
+
+def main(test_function):
+    passed = 0
+    failed = 0
+
+    for test_case in test_cases:
+        correct = test(*test_case, test_function)
+
+        if correct:
+            passed += 1
+        else:
+            failed += 1
+
+    if failed == 0:
+        print("===================================== PASS =====================================")
+    else:
+        print("===================================== FAIL =====================================")
+
+    print(f"{passed} passed, {failed} failed.")
+
+
+if __name__ == "__main__":
+    main(log_scale)
