@@ -1,3 +1,10 @@
+"""
+Solution:
+def decayed_followers(intl_followers, fraction_lost_daily, days):
+    res = intl_followers * (1 - fraction_lost_daily) ** days
+    return res
+"""
+
 def decayed_followers(intl_followers, fraction_lost_daily, days):
     if intl_followers <= 0:
         return 0
