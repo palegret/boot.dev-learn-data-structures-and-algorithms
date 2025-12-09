@@ -12,13 +12,7 @@ def average_followers(nums):
 """
 
 def average_followers(nums):
-    #return sum(nums) / len(nums) if nums else None
-    if len(nums) == 0:
-        return None
-    sum = 0
-    for num in nums:
-        sum += num
-    return sum / len(nums)
+    return sum(nums) / len(nums) if nums else None
 
 
 # Test
